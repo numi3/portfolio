@@ -1,12 +1,15 @@
 body {
     background-color: black;
     color: rgb(231, 231, 231);
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     height: 100vh;
     margin: 0;
     font-family: "Space Mono", monospace;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
@@ -14,9 +17,6 @@ main {
     height: 100vh;
     margin: 0 auto;
     /* background-color: rgb(26, 26, 26); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 section {
@@ -63,23 +63,18 @@ section {
 
 #next {
     animation: float 2s 4s ease-in-out infinite;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     /* background-color: rgb(14, 14, 14) ; */
     width: 50%;
     margin: 0 auto;
     padding: 10px;
     cursor: pointer;
+    flex-direction: column;
 }
 
 #page1 {
     animation: fade-out-page 1.5s;
     animation-play-state: paused;
     animation-fill-mode: forwards;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     /* margin: 0 auto; */
 }
 
@@ -129,8 +124,14 @@ section {
     animation: fade-out-page 1.5s;
     animation-play-state: paused;
     animation-fill-mode: forwards;
-    display: flex;
+
     align-items: start;
+    height: 100vh;
+}
+
+.container {
+
+    height: 100vh;
 }
 
 #description-page2 {
