@@ -1,0 +1,78 @@
+body {
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(30px); /* Adjust as needed */
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0px); }
+}
+
+#next {
+    animation: float 2s 4s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(14, 14, 14) ;
+    width: 33%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#next:hover {
+    
+}
+
+#welcome,
+#arrow,
+#click1 {
+    position: relative;
+    font-family: "Space Mono", monospace;
+    animation-fill-mode: forwards;
+}
+
+#welcome {
+    color: #149414;
+    font-size: 3rem;
+    animation: fade-in 2s, slide-up 2s;
+}
+
+#click1 {
+    opacity: 0;
+    text-align: center;
+    animation: fade-in 3s 3s, slide-up 2s 3s;
+    animation-fill-mode: forwards;
+}
+
+#arrow {
+    opacity: 0;
+    text-align: center;
+    animation: fade-in 3s 2s, slide-up 3s 2s;
+    animation-fill-mode: forwards;    
+}
