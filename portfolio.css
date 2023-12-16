@@ -1,9 +1,29 @@
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222222;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(20, 148, 20);
+    background: #525252;
+}
+
 body {
     background-color: black;
-    color: rgb(231, 231, 231);
+    /* color: #a7a7a7; */
+    color: #ffffff;
     height: 100vh;
+    width: 100vw;
     margin: 0;
     font-family: "Space Mono", monospace;
+    overflow-x: hidden;
+}
+
+.hacker-green {
+    color: rgb(20, 148, 20);
 }
 
 .flex-center {
@@ -13,14 +33,14 @@ body {
 }
 
 main {
-    width: 80vw;
+    width: 100vw;
     height: 100vh;
     margin: 0 auto;
+    overflow-wrap: break-word;
     /* background-color: rgb(26, 26, 26); */
 }
-
 section {
-    width: 100%;
+    width: 80%;
 }
 
 @keyframes fade-out-page {
@@ -43,6 +63,16 @@ section {
     }
 }
 
+@keyframes slide-right {
+    from {
+        transform: translateX(-15px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
 @keyframes slide-up {
     from {
         transform: translateY(30px); /* Adjust as needed */
@@ -64,17 +94,21 @@ section {
 #next {
     animation: float 2s 4s ease-in-out infinite;
     /* background-color: rgb(14, 14, 14) ; */
-    width: 50%;
+    /* width: 50%; */
     margin: 0 auto;
-    padding: 10px;
-    cursor: pointer;
+    padding: 0;
+    width: 100px;
+    height: 50px;
     flex-direction: column;
+    cursor: pointer;
 }
+
 
 #page1 {
     animation: fade-out-page 1.5s;
     animation-play-state: paused;
     animation-fill-mode: forwards;
+    text-align: center;
     /* margin: 0 auto; */
 }
 
@@ -83,6 +117,9 @@ section {
 #click1,
 #description-page1 {
     position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #description-page1 {
@@ -96,11 +133,11 @@ section {
 }
 
 #welcome {
-    text-align: center;
-    color: rgb(20, 148, 20);
+    /* color: rgb(22, 197, 22); */
     font-size: 3rem;
     animation: fade-in 2s, slide-up 2s;
     text-shadow: 10px 10px #010c01;
+    max-width: 100%;
 }
 
 #click1 {
@@ -120,20 +157,46 @@ section {
 
 /* PAGE 2 */
 
-#page2 {
+.page2 {
     animation: fade-out-page 1.5s;
     animation-play-state: paused;
     animation-fill-mode: forwards;
-
     align-items: start;
     height: 100vh;
 }
 
-.container {
-
-    height: 100vh;
+.goBackButton {
+    animation: fade-in 2s, slide-right 2s;
+    display: none;
+    position: fixed;
+    top: 3%;
+    left: 10%;
+    z-index: 9999;
 }
 
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.big-container {
+    height: 75%;
+}
+
+#description-container {
+    width: 100%;
+}
 #description-page2 {
+    /* color: rgb(20, 148, 20); */
+    /* color: rgb(22, 197, 22); */
+    text-shadow: 10px 10px #010c01;
     text-align: center;
 }
+
+#scroll {
+    position: absolute;
+    top: 80%;
+    animation: slide-up 3s, fade-in 2.5s, float 2s 3.5s ease-in-out infinite;
+    animation-play-state: paused;
+} 

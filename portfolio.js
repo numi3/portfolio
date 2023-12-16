@@ -36,6 +36,7 @@ function hackerEffect(element) {
 }
 
 document.querySelector("#welcome").onmouseover = event => hackerEffect(event.target);
+document.querySelector("#welcome").onclick = event => hackerEffect(event.target);
 
 
 const pages = ['#page1','#page2'];
@@ -45,22 +46,28 @@ function showRelevantPage(pageNum) {
         document.querySelector(page).style.display = 'none';
     })
     document.querySelector(pages[pageNum]).style.display = 'block';
+
+    if (pageNum === 1) {
+        typingEffect(document.querySelector('#description-page2'));
+    }
 }
 
-document.querySelector('#next').onclick = (event) => {
-    const element = event.target.parentElement.parentElement;
+document.querySelector('#next').onclick = () => {
+    const element = document.querySelector('#page1');
     element.style.animationPlayState = 'running';
     element.addEventListener('animationend', (event) => {
         if (event.animationName === 'fade-out-page') {
             element.style.animationPlayState = 'paused';
+            document.querySelector('.goBackButton').style.display = 'block';
+
             showRelevantPage(1);
-            typingEffect(document.querySelector('#description-page2'));
         }
     })
 }
 
 document.querySelector('.goBackButton').onclick = () => {
     isRunningHackerEffect = false;
+    document.querySelector('.goBackButton').style.display = 'none';
     hackerEffect(welcome);
     showRelevantPage(0);
 }
@@ -71,8 +78,10 @@ function typingEffect(element) {
     if (isRunningTypingEffect) {
         return;
     }
-
+    const scroll = document.querySelector('#scroll')
+    scroll.style.animationPlayState = 'paused';
     isRunningTypingEffect = true;
+
     let text = element.textContent;
     let index = 0;
     element.textContent = '';
@@ -83,6 +92,7 @@ function typingEffect(element) {
 
         if (index >= text.length) {
             clearInterval(interval);
+            scroll.style.animationPlayState = 'running';
             isRunningTypingEffect = false;
         }
     }, 60);
