@@ -5,8 +5,55 @@ document.addEventListener('DOMContentLoaded', () => {
     hackerEffect(welcome); // Call hackerEffect when the page loads
     showRelevantPage(0);
 
+    // document.querySelector("#next").click()
+
     // showRelevantPage(1);
 });
+
+function selectRandom(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+
+const colors = ["#0e6b0e", "#149414", "#2b5329", "#fff"]
+
+setInterval(() => {
+        const dot = document.createElement("span")
+        dot.className = 'trail'
+        dot.style.left = `${Math.floor(Math.random()*window.innerWidth)}px`;
+        dot.style.top = `${Math.floor(Math.random()*window.innerHeight)}px`;
+        dot.style.color = selectRandom(colors);
+        dot.style.filter = `blur(${Math.floor(Math.random()*4)+ 1}px)`
+        // const interval = setInterval(() => {
+        // }, 10)
+        dot.innerHTML = letters[Math.floor(Math.random() * 36)];
+        // dot.innerHTML = 'X'
+        document.body.appendChild(dot);
+        setTimeout(() => document.body.removeChild(dot), 5000);
+}, 100);
+
+
+const dot = document.createElement("span")
+dot.className = 'trail-glow';
+document.body.appendChild(dot);
+dot.style.backgroundColor = 'rgb(20, 148, 20)';
+
+let mousePos = { x: 0, y: 0 };
+
+document.addEventListener('mousemove', (event) => {
+    mousePos.x = event.clientX;
+    mousePos.y = event.clientY;
+    updateGlow();
+});
+
+document.addEventListener('scroll', () => {
+    updateGlow();
+});
+
+function updateGlow() {
+    dot.style.left = `${mousePos.x}px`;
+    dot.style.top = `${mousePos.y + window.scrollY}px`;
+}
 
 const letters =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
 
@@ -47,8 +94,12 @@ function showRelevantPage(pageNum) {
     })
     document.querySelector(pages[pageNum]).style.display = 'block';
 
-    if (pageNum === 1) {
+    if (pageNum === 0) {
+        document.querySelector("body").style.overflowY = "hidden";
+
+    } else if (pageNum === 1) {
         typingEffect(document.querySelector('#description-page2'));
+        document.querySelector("body").style.overflowY = "scroll";
     }
 }
 
