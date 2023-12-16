@@ -16,6 +16,9 @@ function selectRandom(array) {
 
 
 const colors = ["#0e6b0e", "#149414", "#2b5329", "#fff"]
+const trailContainer = document.createElement("span");
+trailContainer.className = "trail-container";
+document.body.appendChild(trailContainer);
 
 setInterval(() => {
         const dot = document.createElement("span")
@@ -28,14 +31,14 @@ setInterval(() => {
         // }, 10)
         dot.innerHTML = letters[Math.floor(Math.random() * 36)];
         // dot.innerHTML = 'X'
-        document.body.appendChild(dot);
-        setTimeout(() => document.body.removeChild(dot), 5000);
+        trailContainer.appendChild(dot);
+        setTimeout(() => trailContainer.removeChild(dot), 5000);
 }, 100);
 
 
 const dot = document.createElement("span")
 dot.className = 'trail-glow';
-document.body.appendChild(dot);
+trailContainer.appendChild(dot);
 dot.style.backgroundColor = 'rgb(20, 148, 20)';
 
 let mousePos = { x: 0, y: 0 };
