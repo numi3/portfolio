@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     hackerEffect(welcome); // Call hackerEffect when the page loads
     showRelevantPage(0);
 
-    // document.querySelector("#next").click()
-
+    
     // showRelevantPage(1);
+    document.querySelector("#next").click()
 });
 
 function selectRandom(array) {
@@ -23,14 +23,12 @@ document.body.appendChild(trailContainer);
 setInterval(() => {
         const dot = document.createElement("span")
         dot.className = 'trail'
-        dot.style.left = `${Math.floor(Math.random()*window.innerWidth)}px`;
+        dot.style.left = `${Math.floor(Math.random()*window.innerWidth) - 18}px`;
+        dot.style.fontSize = '18px';
         dot.style.top = `${Math.floor(Math.random()*window.innerHeight)}px`;
         dot.style.color = selectRandom(colors);
-        dot.style.filter = `blur(${Math.floor(Math.random()*4)+ 1}px)`
-        // const interval = setInterval(() => {
-        // }, 10)
+        dot.style.filter = `blur(${Math.floor(Math.random()*4)+ 1}px)`;
         dot.innerHTML = letters[Math.floor(Math.random() * 36)];
-        // dot.innerHTML = 'X'
         trailContainer.appendChild(dot);
         setTimeout(() => trailContainer.removeChild(dot), 5000);
 }, 100);
